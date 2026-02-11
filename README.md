@@ -171,6 +171,6 @@ The application implements a secure multi-step authentication process using:
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone 
+git clone https://github.com/samad0210/silent-server-auth-debugging.git
 cd broken_auth_assignment
 
