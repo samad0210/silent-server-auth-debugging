@@ -109,3 +109,68 @@ To submit your assignment:
     *   This file must contain the terminal output of all 4 test commands (Login, Verify OTP, Get Token, Access Protected Route).
     *   Ensure the final command's output showing the `success_flag` is clearly visible in this file.
 3.  Share the link to your repository.
+
+
+# 🔧 The Silent Server – Authentication Debugging Assignment
+
+## 📌 Project Overview
+This project is part of a backend debugging assignment where an intentionally broken authentication system was provided. The objective was to debug and fix the authentication flow and ensure all endpoints work correctly.
+
+The application implements a secure multi-step authentication process using:
+
+- Session-based authentication
+- OTP verification
+- JWT token generation
+- Protected route authorization
+
+---
+
+## 🚀 Features Implemented & Fixed
+
+### ✅ Login Authentication
+- Generates login session
+- Creates OTP
+- Logs OTP in server console
+- Returns loginSessionId
+
+---
+
+### ✅ OTP Verification
+- Fixed OTP validation logic
+- Fixed datatype mismatch issues
+- Fixed cookie session handling
+- Generates session cookie after verification
+
+---
+
+### ✅ JWT Token Generation
+- Fixed session reading bug
+- Generates access token using JWT
+- Token contains authenticated user data
+
+---
+
+### ✅ Protected Route Security
+- Middleware verifies JWT token
+- Allows only authorized users
+- Returns user data with success flag
+
+---
+
+## 🛠️ Tech Stack
+
+- Node.js
+- Express.js
+- JWT Authentication
+- Cookie Based Session Handling
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone 
+cd broken_auth_assignment
+
