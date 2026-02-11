@@ -174,3 +174,67 @@ The application implements a secure multi-step authentication process using:
 git clone https://github.com/samad0210/silent-server-auth-debugging.git
 cd broken_auth_assignment
 
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Start Server
+npm start
+
+
+Server will run at:
+
+http://localhost:3000
+
+🧪 API Testing Flow
+🔹 Step 1 – Login
+curl -X POST http://localhost:3000/auth/login \
+-H "Content-Type: application/json" \
+-d '{"email":"YOUR_EMAIL","password":"password123"}'
+
+✅ Expected Output
+
+Returns loginSessionId
+
+OTP appears in server console
+
+🔹 Step 2 – Verify OTP
+curl -c cookies.txt -X POST http://localhost:3000/auth/verify-otp \
+-H "Content-Type: application/json" \
+-d '{"loginSessionId":"SESSION_ID","otp":"OTP"}'
+
+✅ Expected Output
+
+cookies.txt file created
+
+OTP verified response
+
+🔹 Step 3 – Generate JWT Token
+curl -b cookies.txt -X POST http://localhost:3000/auth/token
+
+✅ Expected Output
+
+Returns access_token
+
+🔹 Step 4 – Access Protected Route
+curl -H "Authorization: Bearer JWT_TOKEN" http://localhost:3000/protected
+
+✅ Expected Output
+
+Access granted response
+
+Returns authenticated user data
+
+Returns success_flag
+
+📄 Output File
+
+The repository includes an output.txt file containing terminal outputs of:
+
+Login request
+
+OTP verification request
+
+Token generation request
+
+Protected route request
+
