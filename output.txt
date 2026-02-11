@@ -1,0 +1,51 @@
+===== TASK 1 : LOGIN =====
+
+Command:
+curl.exe -X POST http://localhost:3000/auth/login -H "Content-Type: application/json" -d "{ \"email\": \"khansamadabdul0202@gmail.com\", \"password\": \"password123\" }"
+
+Output:
+{
+  "message": "OTP sent",
+  "loginSessionId": "7s074"
+}
+
+===== TASK 2 : VERIFY OTP =====
+
+Command:
+curl.exe -c cookies.txt -X POST http://localhost:3000/auth/verify-otp -H "Content-Type: application/json" -d "{ \"loginSessionId\": \"qeqzkj\", \"otp\": \"<OTP_FROM_SERVER_LOGS>\" }"
+
+Output:
+{
+  "message": "OTP verified",
+  "sessionId": "7s074"
+}
+
+
+===== TASK 3 : GENERATE TOKEN =====
+
+Command:
+curl.exe -b cookies.txt -X POST http://localhost:3000/auth/token
+
+Output:
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoYW5zYW1hZGFiZHVsMDIwMkBnbWFpbC5jb20iLCJzZXNzaW9uSWQiOiI3czA3NCIsImlhdCI6MTc3MDgzODQ0NCwiZXhwIjoxNzcwODM5MzQ0fQ.J1zbF_hHgUVaKWioj9evRVqdcLTZ-8O-uX-da3YnAr8",
+  "expires_in": 900
+}
+
+
+===== TASK 4 : ACCESS PROTECTED ROUTE =====
+
+Command:
+curl.exe -H "Authorization: Bearer <JWT_TOKEN>" http://localhost:3000/protected
+
+Output:
+{
+  "message": "Access granted",
+  "user": {
+    "email": "khansamadabdul0202@gmail.com",
+    "sessionId": "7s074",
+    "iat": 1770838444,
+    "exp": 1770839344
+  },
+  "success_flag": "FLAG-a2hhbnNhbWFkYWJkdWwwMjAyQGdtYWlsLmNvbV9DT01QTEVURURfQVNTSUdOTUVOVA=="
+}
